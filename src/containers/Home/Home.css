@@ -1,9 +1,17 @@
 .Home .lander {
-  padding: 10rem 0;
+  padding: 5rem 0;
   color: #2F2D2E;
   text-align: center;
 }
 
 .Home .lander h1 {
   font-weight: 700;
+}
+
+.Agendas {
+  padding: 5rem 0;
+}
+
+.Agendas .Agenda-list {
+  flex: 1;
 }

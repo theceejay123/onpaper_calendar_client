@@ -6,7 +6,7 @@ const config = {
   cognito: {
     REGION: "ca-central-1",
     USER_POOL_ID: "ca-central-1_X6o3hdt7B",
-    APP_CLIENT_ID: "Y71egi7dk8p8ct7sjms0ej4kn9n",
+    APP_CLIENT_ID: "71egi7dk8p8ct7sjms0ej4kn9n",
     IDENTITY_POOL_ID: "ca-central-1:83f4787d-78f2-413a-8ed4-6a8a1bd96c97",
   },
 };

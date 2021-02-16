@@ -1,0 +1,7 @@
+.NewAgenda {
+  padding: 10rem 0;
+}
+
+.NewAgenda form textarea, #title, .TimePicker {
+  font-size: 1.2rem;
+}
