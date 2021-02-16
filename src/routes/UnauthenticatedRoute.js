@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useAppContext } from "../libs/context";
 
-function querystring(name, url = window.location.href) {
+const querystring = (name, url = window.location.href) => {
   name = name.replace(/[[]]/g, "\\$&");
 
   const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i");
@@ -16,9 +16,9 @@ function querystring(name, url = window.location.href) {
   }
 
   return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
+};
 
-export default function UnauthenticatedRoute({ children, ...rest }) {
+const UnauthenticatedRoute = ({ children, ...rest }) => {
   const { isAuthenticated } = useAppContext();
   const redirect = querystring("redirect");
   return (
@@ -30,4 +30,6 @@ export default function UnauthenticatedRoute({ children, ...rest }) {
       )}
     </Route>
   );
-}
+};
+
+export default UnauthenticatedRoute;
