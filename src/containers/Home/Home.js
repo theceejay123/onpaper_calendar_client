@@ -73,7 +73,7 @@ const Home = () => {
                       {title.trim().split("\n")[0]}
                     </span>
                     <br />
-                    <span>Details: {details.trim().split("\n")[0]}</span>
+                    <span>Details: {details}</span>
                     <br />
                     <span>Date: {new Date(schedDate).toDateString()}</span>
                     <br />
@@ -84,13 +84,15 @@ const Home = () => {
                         .format("h:mm A")}
                     </span>
                     <br />
-                    <span className="text-muted">
-                      Updated: {new Date(updatedAt).toLocaleString()}
-                    </span>
-                    <br />
-                    <span className="text-muted">
-                      Created: {new Date(createdAt).toLocaleString()}
-                    </span>
+                    {updatedAt === createdAt ? (
+                      <span className="text-muted">
+                        Created: {new Date(createdAt).toLocaleDateString()}
+                      </span>
+                    ) : (
+                      <span className="text-muted">
+                        Updated: {new Date(updatedAt).toLocaleDateString()}
+                      </span>
+                    )}
                   </ListGroup.Item>
                 </LinkContainer>
               ) : (
