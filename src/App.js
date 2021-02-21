@@ -21,7 +21,7 @@ const App = () => {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [currentUser, setCurrentUser] = useState({
     name: "",
     userId: "",

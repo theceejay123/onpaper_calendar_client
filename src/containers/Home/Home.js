@@ -7,6 +7,7 @@ import "./Home.css";
 
 // Component
 import CustomCalendar from "../../components/Calendar/Calendar";
+import AgendaGroup from "../../components/AgendaGroup/AgendaGroup";
 
 // Library
 import { useAppContext } from "../../libs/context";
@@ -28,7 +29,6 @@ const Home = () => {
       } catch (err) {
         onError(err);
       }
-
       setIsLoading(false);
     };
 
@@ -38,7 +38,9 @@ const Home = () => {
   const loadAgendas = () => {
     return API.get(
       "agendas",
-      `agendas/by_date/${encodeURIComponent(selectedDate.toISOString())}`
+      `agendas/by_date/${encodeURIComponent(
+        moment(selectedDate).format("MM-DD-YYYY")
+      )}`
     );
   };
 
@@ -46,7 +48,10 @@ const Home = () => {
     return (
       <React.Fragment>
         <LinkContainer
-          to={`/agendas/new/${encodeURIComponent(selectedDate.toISOString())}`}
+          key={0}
+          to={`/agendas/new/${encodeURIComponent(
+            moment(selectedDate).format("MM-DD-YYYY")
+          )}`}
         >
           <ListGroup.Item action className="py-3 text-nowrap text-truncate">
             <BsPlus size={25} />
@@ -68,53 +73,33 @@ const Home = () => {
             <>
               {currentUser.userId === userId ? (
                 <LinkContainer key={agendaId} to={`/agendas/${agendaId}`}>
-                  <ListGroup.Item action variant="dark">
-                    <span className="font-weight-bold">
-                      {title.trim().split("\n")[0]}
-                    </span>
-                    <br />
-                    <span>Details: {details}</span>
-                    <br />
-                    <span>Date: {new Date(schedDate).toDateString()}</span>
-                    <br />
-                    <span>
-                      Time:{" "}
-                      {moment(schedTime * 1000)
-                        .utc()
-                        .format("h:mm A")}
-                    </span>
-                    <br />
-                    {updatedAt === createdAt ? (
-                      <span className="text-muted">
-                        Created: {new Date(createdAt).toLocaleDateString()}
-                      </span>
-                    ) : (
-                      <span className="text-muted">
-                        Updated: {new Date(updatedAt).toLocaleDateString()}
-                      </span>
-                    )}
-                  </ListGroup.Item>
+                  <AgendaGroup
+                    title={title}
+                    details={details}
+                    schedDate={schedDate}
+                    schedTime={schedTime}
+                    createdAt={createdAt}
+                    updatedAt={updatedAt}
+                    hideCreatedBy={true}
+                    name={name}
+                    action
+                    variant="dark"
+                  />
                 </LinkContainer>
               ) : (
-                <ListGroup.Item disabled key={agendaId}>
-                  <span className="font-weight-bold">
-                    {title.trim().split("\n")[0]}
-                  </span>
-                  <br />
-                  <span>Details: {details.trim().split("\n")[0]}</span>
-                  <br />
-                  <span>Date: {new Date(schedDate).toDateString()}</span>
-                  <br />
-                  <span>
-                    Time:{" "}
-                    {moment(schedTime * 1000)
-                      .utc()
-                      .format("h:mm A")}
-                  </span>
-                  <br />
-                  <span className="text-muted">Created By: {name}</span>
-                  <br />
-                </ListGroup.Item>
+                <LinkContainer key={agendaId} to={`/agendas/${agendaId}`}>
+                  <AgendaGroup
+                    title={title}
+                    details={details}
+                    schedDate={schedDate}
+                    schedTime={schedTime}
+                    createdAt={createdAt}
+                    updatedAt={updatedAt}
+                    hideCreatedBy={false}
+                    name={name}
+                    disabled
+                  />
+                </LinkContainer>
               )}
             </>
           )

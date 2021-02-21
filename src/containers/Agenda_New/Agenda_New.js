@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import TimePicker from "react-bootstrap-time-picker";
+import moment from "moment";
 import { API } from "aws-amplify";
 import "./Agenda_New.css";
 
@@ -31,7 +32,7 @@ const NewAgenda = () => {
   }, []);
 
   const onLoad = () => {
-    setSelectedDate(new Date(decodeURIComponent(date)));
+    setSelectedDate(new Date(decodeURIComponent(date).split("-")));
   };
 
   const handleTimeChange = (time) => {
@@ -43,10 +44,11 @@ const NewAgenda = () => {
     setIsLoading(true);
 
     try {
+      console.log(selectedDate);
       await createAgenda({
         title: fields.title,
         details: fields.details,
-        date: selectedDate,
+        date: moment(selectedDate).format("MM-DD-YYYY"),
         time,
         name: currentUser.name,
       });
@@ -71,7 +73,7 @@ const NewAgenda = () => {
     <div>
       {selectedDate && (
         <div className="NewAgenda">
-          <h3>{selectedDate.toDateString()}</h3>
+          <h3>{moment(selectedDate).format("dddd - MMMM Do, YYYY")}</h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>

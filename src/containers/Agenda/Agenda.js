@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { API } from "aws-amplify";
 import TimePicker from "react-bootstrap-time-picker";
+import moment from "moment";
 import "./Agenda.css";
 
 // Bootstrap
@@ -11,13 +12,11 @@ import Form from "react-bootstrap/Form";
 import LoaderButton from "../../components/LoaderButton/LoaderButton";
 
 // Library
-import { useAppContext } from "../../libs/context";
 import { onError } from "../../libs/errors";
 
 const Agenda = () => {
   const { id } = useParams();
   const history = useHistory();
-  const { selectedDate, setSelectedDate } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [fields, handleFieldChange] = useState({
@@ -107,9 +106,11 @@ const Agenda = () => {
 
   return (
     <div className="Agenda">
-      {time && (
+      {time >= 0 && (
         <React.Fragment>
-          <h3>{new Date(fields.date).toDateString()}</h3>
+          <h3>
+            {moment(fields.date, "MM-DD-YYYY").format("dddd - MMMM Do, YYYY")}
+          </h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
