@@ -8,6 +8,7 @@ import "./App.css";
 import { LinkContainer } from "react-router-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Image from "react-bootstrap/Image";
 
 // Routes
 import Routes from "./routes/Routes";
@@ -71,7 +72,10 @@ const App = () => {
           fixed="top"
         >
           <LinkContainer to="/">
-            <Navbar.Brand className="font-weight-bold">OnPaper</Navbar.Brand>
+            <Navbar.Brand className="font-weight-bold">
+              <Image src="favicon-32x32.png" fluid className="agendaIcon" />
+              OnPaper
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">

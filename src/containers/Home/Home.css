@@ -1,3 +1,32 @@
+@media all and (max-width: 600px) {
+  .Home .lander {
+    padding: 5rem 0;
+    color: #2F2D2E;
+    text-align: center;
+  }
+  
+  .Home .lander h1 {
+    font-weight: 700;
+  }
+  
+  .Agendas {
+    padding: 5rem 0;
+  }
+  
+  .Agendas .Agenda-list {
+    flex: 1;
+  }
+  
+  .Agendas .Agendas-content {
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+
+  .Agendas-main {
+    flex-direction: column;
+  }
+}
+
 .Home .lander {
   padding: 5rem 0;
   color: #2F2D2E;
@@ -14,4 +43,9 @@
 
 .Agendas .Agenda-list {
   flex: 1;
+}
+
+.Agendas .Agendas-content {
+  padding-left: 1rem;
+  padding-bottom: 0.25rem;
 }
