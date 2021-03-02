@@ -1,4 +1,35 @@
-@media all and (max-width: 600px) {
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .Home .lander {
+    padding: 5rem 0;
+    color: #2F2D2E;
+    text-align: center;
+  }
+
+  .lander > h1 {
+    font-weight: 700;
+  }
+
+  .Agendas-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Agendas .Agenda-title {
+    font-size: 1.3rem;
+  }
+
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 275px) and (max-width: 767px) and (orientation: portrait) {
   .Home .lander {
     padding: 5rem 0;
     color: #2F2D2E;
@@ -59,3 +90,4 @@
 .Agendas .Agendas-main {
   padding-right: 2vh;
 }
+
