@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useAppContext } from "../../libs/context";
+import "./Calendar.css";
 
 const CustomCalendar = () => {
   const { selectedDate, setSelectedDate } = useAppContext();

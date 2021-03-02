@@ -24,7 +24,13 @@
 
   .Agendas-main {
     flex-direction: column;
+    align-items: center;
   }
+
+  .Agendas .Agenda-title {
+    font-size: 1.3rem;
+  }
+  
 }
 
 .Home .lander {
@@ -48,4 +54,8 @@
 .Agendas .Agendas-content {
   padding-left: 1rem;
   padding-bottom: 0.25rem;
+}
+
+.Agendas .Agendas-main {
+  padding-right: 2vh;
 }

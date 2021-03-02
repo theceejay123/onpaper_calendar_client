@@ -120,13 +120,13 @@ const Home = () => {
   const renderAgendas = () => {
     return (
       <div className="Agendas">
-        <h2 className="pb-3 mt-4 mb-3 border-bottom">
+        <h2 className="Agenda-title pb-3 mt-4 mb-3 border-bottom">
           Community Agenda -{" "}
           {currentUser.name &&
             currentUser.name.split(" ") &&
             currentUser.name.split(" ")[0]}
         </h2>
-        <div className="Agendas-main d-flex align-items-start">
+        <div className="Agendas-main d-flex">
           <CustomCalendar />
           {!isLoading && renderAgendaList(agendas)}
         </div>
