@@ -46,33 +46,35 @@ const Home = () => {
 
   const renderAgendaList = (agendas) => {
     return (
-      <React.Fragment>
-        <LinkContainer
-          key={0}
-          to={`/agendas/new/${encodeURIComponent(
-            moment(selectedDate).format("MM-DD-YYYY")
-          )}`}
-        >
-          <ListGroup.Item action className="py-3 text-nowrap text-truncate">
-            <BsPlus size={25} />
-            <span className="ml-2 font-weight-bold">Create a new agenda</span>
-          </ListGroup.Item>
-        </LinkContainer>
-        {agendas.map(
-          ({
-            agendaId,
-            title,
-            details,
-            schedDate,
-            schedTime,
-            createdAt,
-            updatedAt,
-            userId,
-            name,
-          }) => (
-            <>
-              {currentUser.userId === userId ? (
-                <LinkContainer key={agendaId} to={`/agendas/${agendaId}`}>
+      <div className="flex-row Agenda-list">
+        <ListGroup className="Agendas-content">
+          <LinkContainer
+            key={0}
+            to={`/agendas/new/${encodeURIComponent(
+              moment(selectedDate).format("MM-DD-YYYY")
+            )}`}
+          >
+            <ListGroup.Item action className="py-3 text-nowrap text-truncate">
+              <BsPlus size={25} />
+              <span className="ml-2 font-weight-bold">Create a new agenda</span>
+            </ListGroup.Item>
+          </LinkContainer>
+        </ListGroup>
+        <ListGroup className="Agendas-content">
+          {agendas.map(
+            ({
+              agendaId,
+              title,
+              details,
+              schedDate,
+              schedTime,
+              createdAt,
+              updatedAt,
+              userId,
+              name,
+            }) => (
+              <LinkContainer key={agendaId} to={`/agendas/${agendaId}`}>
+                {currentUser.userId === userId ? (
                   <AgendaGroup
                     title={title}
                     details={details}
@@ -85,9 +87,7 @@ const Home = () => {
                     action
                     variant="dark"
                   />
-                </LinkContainer>
-              ) : (
-                <LinkContainer key={agendaId} to={`/agendas/${agendaId}`}>
+                ) : (
                   <AgendaGroup
                     title={title}
                     details={details}
@@ -99,12 +99,12 @@ const Home = () => {
                     name={name}
                     disabled
                   />
-                </LinkContainer>
-              )}
-            </>
-          )
-        )}
-      </React.Fragment>
+                )}
+              </LinkContainer>
+            )
+          )}
+        </ListGroup>
+      </div>
     );
   };
 
@@ -120,22 +120,15 @@ const Home = () => {
   const renderAgendas = () => {
     return (
       <div className="Agendas">
-        <h2 className="pb-3 mt-4 mb-3 border-bottom">
-          Community Agenda - Hello {currentUser.name}!
+        <h2 className="Agenda-title pb-3 mt-4 mb-3 border-bottom">
+          Community Agenda -{" "}
+          {currentUser.name &&
+            currentUser.name.split(" ") &&
+            currentUser.name.split(" ")[0]}
         </h2>
-        <div className="d-flex align-items-start">
+        <div className="Agendas-main d-flex">
           <CustomCalendar />
-          <ListGroup className="Agenda-list">
-            {!isLoading ? (
-              renderAgendaList(agendas)
-            ) : (
-              <ListGroup.Item className="py-3 text-nowrap text-truncate">
-                <span className="ml-2 font-weight-bold">
-                  Please select date
-                </span>
-              </ListGroup.Item>
-            )}
-          </ListGroup>
+          {!isLoading && renderAgendaList(agendas)}
         </div>
       </div>
     );

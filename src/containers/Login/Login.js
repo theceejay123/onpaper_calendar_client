@@ -49,6 +49,7 @@ const Login = () => {
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
+            autoComplete="username"
             type="email"
             value={fields.email}
             onChange={handleFieldChange}
@@ -58,6 +59,7 @@ const Login = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
+            autoComplete="password"
             value={fields.password}
             onChange={handleFieldChange}
           />
