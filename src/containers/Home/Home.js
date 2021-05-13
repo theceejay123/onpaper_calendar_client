@@ -118,6 +118,7 @@ const Home = () => {
           <Link to="/login" className="btn btn-info btn-lg mr-3">
             Login
           </Link>
+          <Link className="btn btn-success btn-lg mr-3">Signup</Link>
         </div>
       </div>
     );
