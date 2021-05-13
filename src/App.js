@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Auth } from "aws-amplify";
-import moment from "moment";
 import "./App.css";
 
 // Bootstrap
