@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 import { BsPlus } from "react-icons/bs";
 import moment from "moment";
 import "./Home.css";
@@ -113,6 +114,11 @@ const Home = () => {
       <div className="lander d-flex align-items-center flex-column">
         <h1 className="lander-title text-dark">Calendar</h1>
         <p className="lander-p text-muted">A simple calendar for OnPaper!</p>
+        <div className="pt-3">
+          <Link to="/login" className="btn btn-info btn-lg mr-3">
+            Login
+          </Link>
+        </div>
       </div>
     );
   };
